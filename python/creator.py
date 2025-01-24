@@ -1,4 +1,7 @@
-num1 = float(input("Enter the first number: "))
-num2 = float(input("Enter the second number: "))
+
+numbers = input().split()
+
+num1 = float(numbers[0])
+num2 = float(numbers[1])
 
 print("The sum is:", num1 + num2)
