@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/home/sanzhaub/test-repo/main.py", line 29, in <module>
+    mem = [int(n) for n in read_mem().split()]
+                           ~~~~~~~~^^
+  File "/home/sanzhaub/test-repo/main.py", line 10, in read_mem
+    f = open(TMP_FILE, "rt")
+FileNotFoundError: [Errno 2] No such file or directory: 'temp/mem.txt'

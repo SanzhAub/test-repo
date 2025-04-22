@@ -1,14 +1,7 @@
 #!/bin/bash
 
-if [ -z "$1"]; then 
-    BASE_PATH="."
-else 
-    BASE_PATH="$1"
-fi
-
-mkdir -p "${BASE_PATH}/temp"
-mkdir -p "${BASE_PATH}/persistent"
-
-echo "DIr created in: ${BASE_PATH}/"
-
-
+BASE=${1:-.}
+mkdir -p $BASE/{temp, persistent, volume}
+sudo mount -t tmpfs -o size=100M tmpfs $BASE/temp
+sudo mount --bind $BASE/volume $BASE/persistent
+mount | grep -E "temp|persistent"
