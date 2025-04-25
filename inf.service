@@ -1,0 +1,9 @@
+[Unit]
+Description=Simple Inf Printer
+
+[Service]
+ExecStart=/home/sanzhaub/test-repo/run-program.sh
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
