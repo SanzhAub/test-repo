@@ -1,0 +1,18 @@
+table ip filter {
+	chain INPUT {
+		type filter hook input priority filter; policy drop;
+		tcp dport { 22, 80, 443, 9090 } accept
+		ct state established,related accept
+	}
+}
+table ip nat {
+	chain prerouting {
+		type nat hook prerouting priority dstnat; policy accept;
+		dnat to numgen inc mod 2 map { 0 : 172.67.166.6, 1 : 142.250.185.196 }
+	}
+
+	chain postrouting {
+		type nat hook postrouting priority srcnat; policy accept;
+		oifname "enp0s3" masquerade
+	}
+}
